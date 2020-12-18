@@ -9,7 +9,7 @@ using Entities;
 
 namespace DAL
 {
-    class ProductosDAL
+    public class ProductosDAL
     {
         public static void Update(string pConnection, ProductosEntity pProductos)
         {
@@ -27,7 +27,6 @@ namespace DAL
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
-
                 }
             }
         }
