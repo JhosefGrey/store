@@ -14,6 +14,5 @@ namespace Entities
         public string code { get; set; }
         public int cantidad { get; set; }
         public decimal precio { get; set; }
-        public DetallesFactura detallesFactura { get; set; }
     }
 }

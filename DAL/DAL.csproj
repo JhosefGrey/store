@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientesDAL.cs" />
+    <Compile Include="DetallesFactura.cs" />
+    <Compile Include="FacturasDAL.cs" />
     <Compile Include="ProductosDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
