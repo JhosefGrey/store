@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientesEntity.cs" />
-    <Compile Include="DetallesFactura.cs" />
+    <Compile Include="DetallesFacturaEntity.cs" />
     <Compile Include="FacturasEntity.cs" />
     <Compile Include="ProductosEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

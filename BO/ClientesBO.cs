@@ -9,7 +9,7 @@ using Entities;
 
 namespace BO
 {
-    class ClientesBO
+    public class ClientesBO
     {
         #region Propiedades
         public int id { get; set; }

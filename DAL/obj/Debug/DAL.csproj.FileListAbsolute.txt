@@ -1,0 +1,9 @@
+D:\Programming\Store\Store\DAL\bin\Debug\DAL.dll
+D:\Programming\Store\Store\DAL\bin\Debug\DAL.pdb
+D:\Programming\Store\Store\DAL\bin\Debug\Entities.dll
+D:\Programming\Store\Store\DAL\bin\Debug\Entities.pdb
+D:\Programming\Store\Store\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\Programming\Store\Store\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Programming\Store\Store\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Programming\Store\Store\DAL\obj\Debug\DAL.dll
+D:\Programming\Store\Store\DAL\obj\Debug\DAL.pdb

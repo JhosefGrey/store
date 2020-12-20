@@ -11,19 +11,18 @@ namespace DAL
 {
     class DetallesFactura
     {
-        public static void Update(string pConnection, ProductosEntity pProductos)
+        public static void Update(string pConnection, DetallesFacturaEntity pDetalle)
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("UPDATE tb_productos SET nombre=@nombre,descripcion=@descripcion,code=@code,cantidad=@cantidad,precio=@precio WHERE id=@id", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("UPDATE tb_detalles_factura SET cantidad_productos=@cantidad_productos, total=@total,id_factura=@id_factura,id_producto=@id_producto WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
-                    lCommand.Parameters.AddWithValue("@id", pProductos.id);
-                    lCommand.Parameters.AddWithValue("@nombre", pProductos.nombre);
-                    lCommand.Parameters.AddWithValue("@descripcion", pProductos.descripcion);
-                    lCommand.Parameters.AddWithValue("@code", pProductos.code);
-                    lCommand.Parameters.AddWithValue("@cantidad", pProductos.cantidad);
-                    lCommand.Parameters.AddWithValue("@precio", pProductos.precio);
+                    lCommand.Parameters.AddWithValue("@id", pDetalle.id);
+                    lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
+                    lCommand.Parameters.AddWithValue("@total", pDetalle.total);
+                    lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
+                    lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
@@ -31,35 +30,32 @@ namespace DAL
             }
         }
 
-        public static void UpdateTransaction(SqlConnection pConnection, SqlTransaction pTrasaction, ProductosEntity pProductos)
+        public static void UpdateTransaction(SqlConnection pConnection, SqlTransaction pTrasaction, DetallesFacturaEntity pDetalle)
         {
-            using (SqlCommand lCommand = new SqlCommand("UPDATE tb_productos SET nombre=@nombre,descripcion=@descripcion,code=@code,cantidad=@cantidad,precio=@precio WHERE id=@id", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("UPDATE tb_detalles_factura SET cantidad_productos=@cantidad_productos, total=@total,id_factura=@id_factura,id_producto=@id_producto WHERE id=@id", pConnection))
             {
                 lCommand.Transaction = pTrasaction;
                 lCommand.CommandType = CommandType.Text;
-                lCommand.Parameters.AddWithValue("@id", pProductos.id);
-                lCommand.Parameters.AddWithValue("@nombre", pProductos.nombre);
-                lCommand.Parameters.AddWithValue("@descripcion", pProductos.descripcion);
-                lCommand.Parameters.AddWithValue("@code", pProductos.code);
-                lCommand.Parameters.AddWithValue("@cantidad", pProductos.cantidad);
-                lCommand.Parameters.AddWithValue("@precio", pProductos.precio);
+                lCommand.Parameters.AddWithValue("@id", pDetalle.id);
+                lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
+                lCommand.Parameters.AddWithValue("@total", pDetalle.total);
+                lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
+                lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
                 lCommand.ExecuteNonQuery();
             }
         }
 
-        public static void Add(string pConnection, ProductosEntity pProductos)
+        public static void Add(string pConnection, DetallesFacturaEntity pDetalle)
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_productos (nombre,descripcion,code,cantidad,precio) VALUES (@nombre,@descripcion,@code,@cantidad,@precio)", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_productos (cantiad_productos,total,id_factura,id_producto) VALUES (@cantiad_productos,@total,@id_factura,@id_producto)", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
-                    lCommand.Parameters.AddWithValue("@id", pProductos.id);
-                    lCommand.Parameters.AddWithValue("@nombre", pProductos.nombre);
-                    lCommand.Parameters.AddWithValue("@descripcion", pProductos.descripcion);
-                    lCommand.Parameters.AddWithValue("@code", pProductos.code);
-                    lCommand.Parameters.AddWithValue("@cantidad", pProductos.cantidad);
-                    lCommand.Parameters.AddWithValue("@precio", pProductos.precio);
+                    lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
+                    lCommand.Parameters.AddWithValue("@total", pDetalle.total);
+                    lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
+                    lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
@@ -67,18 +63,16 @@ namespace DAL
             }
         }
 
-        public static void AddTransaction(SqlConnection pConnection, SqlTransaction pTransaction, ProductosEntity pProductos)
+        public static void AddTransaction(SqlConnection pConnection, SqlTransaction pTransaction, DetallesFacturaEntity pDetalle)
         {
-            using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_productos (nombre,descripcion,code,cantidad,precio) VALUES (@nombre,@descripcion,@code,@cantidad,@precio)", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_productos (cantiad_productos,total,id_factura,id_producto) VALUES (@cantiad_productos,@total,@id_factura,@id_producto)", pConnection))
             {
                 lCommand.Transaction = pTransaction;
                 lCommand.CommandType = CommandType.Text;
-                lCommand.Parameters.AddWithValue("@id", pProductos.id);
-                lCommand.Parameters.AddWithValue("@nombre", pProductos.nombre);
-                lCommand.Parameters.AddWithValue("@descripcion", pProductos.descripcion);
-                lCommand.Parameters.AddWithValue("@code", pProductos.code);
-                lCommand.Parameters.AddWithValue("@cantidad", pProductos.cantidad);
-                lCommand.Parameters.AddWithValue("@precio", pProductos.precio);
+                lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
+                lCommand.Parameters.AddWithValue("@total", pDetalle.total);
+                lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
+                lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
                 lCommand.ExecuteNonQuery();
             }
         }

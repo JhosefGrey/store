@@ -1,0 +1,11 @@
+D:\Programming\Store\Store\BO\bin\Debug\BO.dll
+D:\Programming\Store\Store\BO\bin\Debug\BO.pdb
+D:\Programming\Store\Store\BO\bin\Debug\DAL.dll
+D:\Programming\Store\Store\BO\bin\Debug\Entities.dll
+D:\Programming\Store\Store\BO\bin\Debug\DAL.pdb
+D:\Programming\Store\Store\BO\bin\Debug\Entities.pdb
+D:\Programming\Store\Store\BO\obj\Debug\BO.csprojAssemblyReference.cache
+D:\Programming\Store\Store\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
+D:\Programming\Store\Store\BO\obj\Debug\BO.csproj.CopyComplete
+D:\Programming\Store\Store\BO\obj\Debug\BO.dll
+D:\Programming\Store\Store\BO\obj\Debug\BO.pdb

@@ -83,3 +83,11 @@ D:\Programming\Store\Store\Store.API\obj\Debug\Store.API.csproj.CoreCompileInput
 D:\Programming\Store\Store\Store.API\obj\Debug\Store.API.csproj.CopyComplete
 D:\Programming\Store\Store\Store.API\obj\Debug\Store.API.dll
 D:\Programming\Store\Store\Store.API\obj\Debug\Store.API.pdb
+D:\Programming\Store\Store\Store.API\bin\BL.dll
+D:\Programming\Store\Store\Store.API\bin\BO.dll
+D:\Programming\Store\Store\Store.API\bin\Entities.dll
+D:\Programming\Store\Store\Store.API\bin\DAL.dll
+D:\Programming\Store\Store\Store.API\bin\BL.pdb
+D:\Programming\Store\Store\Store.API\bin\BO.pdb
+D:\Programming\Store\Store\Store.API\bin\Entities.pdb
+D:\Programming\Store\Store\Store.API\bin\DAL.pdb
