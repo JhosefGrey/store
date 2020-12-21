@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace BO
 {
-    class FacturasBO
+    public class FacturasBO
     {
 
         #region Properties 

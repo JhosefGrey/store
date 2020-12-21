@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace BO
 {
-    class ProductosBO
+    public class ProductosBO
     {
         #region Propiedades
         public int id { get; set; }

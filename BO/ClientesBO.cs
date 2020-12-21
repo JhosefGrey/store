@@ -54,7 +54,6 @@ namespace BO
         public void Save(string pConnection)
         {
             ClientesEntity pCLientes = new ClientesEntity();
-            pCLientes.id = id;
             pCLientes.apellido = apellido;
             pCLientes.nombre = nombre;
             pCLientes.nit = nit;
@@ -127,7 +126,6 @@ namespace BO
 
         } 
 
-
         public static List<ClientesBO> GetAllQuery(string pConnection, string pQuery)
         {
             List<ClientesEntity> lClientes = ClientesDAL.GetAllQuery(pConnection, pQuery);
@@ -141,7 +139,6 @@ namespace BO
             return lista;
 
         }
-
 
         public static ClientesBO GetSingle(string pConnection, ClientesEntity pClientes)
         {
