@@ -9,7 +9,7 @@ using Entities;
 
 namespace DAL
 {
-    class FacturasDAL
+    public class FacturasDAL
     {
         public static void Update(string pConnection, FacturasEntity pFacturas)
         {
@@ -216,7 +216,7 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlDataAdapter lDataAdapter = new SqlDataAdapter("SELECT TOP 1 * FROM tb_productos WHERE id=@id", lConnection))
+                using (SqlDataAdapter lDataAdapter = new SqlDataAdapter("SELECT TOP 1 * FROM tb_facturas WHERE id=@id", lConnection))
                 {
 
                     lDataAdapter.SelectCommand.CommandType = CommandType.Text;

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientesBO.cs" />
+    <Compile Include="FacturasBO.cs" />
     <Compile Include="ProductosBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
