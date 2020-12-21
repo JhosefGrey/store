@@ -9,7 +9,7 @@ using Entities;
 
 namespace DAL
 {
-    class DetallesFactura
+    public class DetallesFacturaDAL
     {
         public static void Update(string pConnection, DetallesFacturaEntity pDetalle)
         {
@@ -77,14 +77,14 @@ namespace DAL
             }
         }
 
-        public static void Delete(string pConnection, ProductosEntity pProductos)
+        public static void Delete(string pConnection, DetallesFacturaEntity pDetalles)
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
                 using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_detalles_factura WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
-                    lCommand.Parameters.AddWithValue("@id", pProductos.id);
+                    lCommand.Parameters.AddWithValue("@id", pDetalles.id);
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
@@ -92,13 +92,13 @@ namespace DAL
             }
         }
 
-        public static void DeleteTransaction(SqlConnection pConnection, SqlTransaction pTransaction, ProductosEntity pProductos)
+        public static void DeleteTransaction(SqlConnection pConnection, SqlTransaction pTransaction, DetallesFacturaEntity pDetalles)
         {
             using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_detalles_factura WHERE id=@id", pConnection))
             {
                 lCommand.Transaction = pTransaction;
                 lCommand.CommandType = CommandType.Text;
-                lCommand.Parameters.AddWithValue("@id", pProductos.id);
+                lCommand.Parameters.AddWithValue("@id", pDetalles.id);
                 lCommand.ExecuteNonQuery();
             }
         }
