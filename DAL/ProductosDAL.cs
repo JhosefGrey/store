@@ -87,7 +87,7 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_productos WHERE id=@id", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("DELETE FROM tb_productos WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
                     lCommand.Parameters.AddWithValue("@id", pProductos.id);
@@ -100,7 +100,7 @@ namespace DAL
 
         public static void DeleteTransaction(SqlConnection pConnection, SqlTransaction pTransaction, ProductosEntity pProductos)
         {
-            using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_productos WHERE id=@id", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("DELETE FROM tb_productos WHERE id=@id", pConnection))
             {
                 lCommand.Transaction = pTransaction;
                 lCommand.CommandType = CommandType.Text;
