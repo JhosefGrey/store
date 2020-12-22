@@ -15,6 +15,8 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
+
+
                 using (SqlCommand lCommand = new SqlCommand("UPDATE tb_facturas SET num=@num,serie=@serie,fecha=@fecha,id_cliente=@id_cliente WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
@@ -81,7 +83,7 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_facturas WHERE id=@id", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("DELETE FROM tb_facturas WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
                     lCommand.Parameters.AddWithValue("@id", pFacturas.id);

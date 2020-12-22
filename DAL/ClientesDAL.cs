@@ -22,7 +22,7 @@ namespace DAL
                     lCommand.Parameters.AddWithValue("@id", pClientes.id);
                     lCommand.Parameters.AddWithValue("@apellido", pClientes.apellido);
                     lCommand.Parameters.AddWithValue("@nombre", pClientes.nombre);
-                    if (pClientes.nit == "") lCommand.Parameters.AddWithValue("@nit", DBNull.Value); else lCommand.Parameters.AddWithValue("@nit", pClientes.nit);
+                    if (pClientes.nit == "") lCommand.Parameters.AddWithValue("@nit", "C/F"); else lCommand.Parameters.AddWithValue("@nit", pClientes.nit);
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
@@ -79,7 +79,7 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_clientes WHERE id=@id", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("DELETE FROM tb_clientes WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
                     lCommand.Parameters.AddWithValue("@id", pClientes.id);

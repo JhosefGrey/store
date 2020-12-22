@@ -262,6 +262,10 @@
       <Project>{6a413215-ad0c-49a7-9075-f5d995906b9d}</Project>
       <Name>BO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{ec841904-4168-456e-a9cd-b004b99ba719}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

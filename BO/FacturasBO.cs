@@ -16,7 +16,7 @@ namespace BO
         public int id { get; set; }
         public int num { get; set; }
         public string serie { get; set; }
-        public DateTime fecha { get; set; }
+        public DateTime fecha { get; set; } = DateTime.Now;
         public int id_cliente { get; set; }
         public bool IsNew { get; set; }
         #endregion
@@ -30,9 +30,10 @@ namespace BO
             {
                 this.FillEntity(FacturasDAL.GetSingle(pConnection, pFacturas));
             }
-            catch
+            catch(Exception e)
             {
                 this.FillEntity();
+          
             }
         }
 
@@ -60,6 +61,7 @@ namespace BO
             FacturasEntity pFacturas = new FacturasEntity();
             pFacturas.id = id;
             pFacturas.num = num;
+            pFacturas.fecha = fecha;
             pFacturas.serie = serie;
             pFacturas.id_cliente = id_cliente;
             if (IsNew == false)
@@ -163,6 +165,7 @@ namespace BO
                 id = pFacturas.id;
                 num = pFacturas.num;
                 serie = pFacturas.serie;
+                fecha = pFacturas.fecha;
                 id_cliente = pFacturas.id_cliente;
                 IsNew = false;
             }
@@ -178,6 +181,7 @@ namespace BO
             id = 0;
             num = 0;
             serie = null;
+            fecha = DateTime.Now;
             id_cliente = 0;
             IsNew = true;
         }

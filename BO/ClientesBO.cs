@@ -54,6 +54,7 @@ namespace BO
         public void Save(string pConnection)
         {
             ClientesEntity pCLientes = new ClientesEntity();
+            pCLientes.id = id;
             pCLientes.apellido = apellido;
             pCLientes.nombre = nombre;
             pCLientes.nit = nit;

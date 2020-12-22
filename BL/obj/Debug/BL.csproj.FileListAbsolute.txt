@@ -4,3 +4,12 @@ D:\Programming\Store\Store\BL\obj\Debug\BL.csprojAssemblyReference.cache
 D:\Programming\Store\Store\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 D:\Programming\Store\Store\BL\obj\Debug\BL.dll
 D:\Programming\Store\Store\BL\obj\Debug\BL.pdb
+D:\Programming\Store\Store\BL\bin\Debug\BO.dll
+D:\Programming\Store\Store\BL\bin\Debug\Entidades.dll
+D:\Programming\Store\Store\BL\bin\Debug\Entities.dll
+D:\Programming\Store\Store\BL\bin\Debug\DAL.dll
+D:\Programming\Store\Store\BL\bin\Debug\BO.pdb
+D:\Programming\Store\Store\BL\bin\Debug\Entidades.pdb
+D:\Programming\Store\Store\BL\bin\Debug\Entities.pdb
+D:\Programming\Store\Store\BL\bin\Debug\DAL.pdb
+D:\Programming\Store\Store\BL\obj\Debug\BL.csproj.CopyComplete

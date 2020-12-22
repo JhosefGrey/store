@@ -91,3 +91,5 @@ D:\Programming\Store\Store\Store.API\bin\BL.pdb
 D:\Programming\Store\Store\Store.API\bin\BO.pdb
 D:\Programming\Store\Store\Store.API\bin\Entities.pdb
 D:\Programming\Store\Store\Store.API\bin\DAL.pdb
+D:\Programming\Store\Store\Store.API\bin\Entidades.dll
+D:\Programming\Store\Store\Store.API\bin\Entidades.pdb
