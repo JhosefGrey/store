@@ -8,11 +8,12 @@ namespace Entidades
 {
     public class eFactura
     {
-        public int id { get; set; } = 0;
+        public string id { get; set; } 
         public string serie { get; set; }
+        public string fecha { get; set; }
         public int id_cliente { get; set; }
         public int num { get; set; }
-        public List<eDetalleFactura> Detelle { get; set; }
+        public List<eDetalleFactura> Detalles { get; set; }
      
     }
 }

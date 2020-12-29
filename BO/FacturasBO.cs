@@ -13,15 +13,15 @@ namespace BO
     {
 
         #region Properties 
-        public int id { get; set; }
+        public string id { get; set; }
         public int num { get; set; }
         public string serie { get; set; }
-        public DateTime fecha { get; set; } = DateTime.Now;
+        public DateTime fecha { get; set; } 
         public int id_cliente { get; set; }
         public bool IsNew { get; set; }
         #endregion
 
-        public FacturasBO(string pConnection, int pId)
+        public FacturasBO(string pConnection, string pId)
         {
             FacturasEntity pFacturas = new FacturasEntity();
             pFacturas.id = pId;
@@ -76,6 +76,7 @@ namespace BO
             pFacturas.id = id;
             pFacturas.num = num;
             pFacturas.serie = serie;
+            pFacturas.fecha = fecha;
             pFacturas.id_cliente = id_cliente;
 
             if (IsNew == false)
@@ -99,7 +100,7 @@ namespace BO
             FacturasDAL.DeleteTransaction(pConnection, pTransaction, pFacturas);
         }
 
-        public static bool Exists(string pConnection, int pId)
+        public static bool Exists(string pConnection, string pId)
         {
             FacturasEntity pFacturas = new FacturasEntity();
             pFacturas.id = pId;
@@ -155,6 +156,13 @@ namespace BO
             return new FacturasBO(pFacturas);
         }
 
+
+        public static int GetNum(string pConnection, string pSerie)
+        {
+            
+            return FacturasDAL.GetNum(pConnection, pSerie)+1;
+        }
+
         #endregion
         #region Privados
 
@@ -178,7 +186,7 @@ namespace BO
 
         private void FillEntity()
         {
-            id = 0;
+            id = null ;
             num = 0;
             serie = null;
             fecha = DateTime.Now;

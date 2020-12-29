@@ -15,14 +15,14 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("UPDATE tb_detalles_factura SET cantidad_productos=@cantidad_productos, total=@total,id_factura=@id_factura,id_producto=@id_producto WHERE id=@id", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("UPDATE tb_detalles_factura SET cantidad_productos=@cantidad_productos, total=@total,id_factura=@id_factura,id_productos=@id_productos WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
                     lCommand.Parameters.AddWithValue("@id", pDetalle.id);
                     lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
                     lCommand.Parameters.AddWithValue("@total", pDetalle.total);
                     lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
-                    lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
+                    lCommand.Parameters.AddWithValue("@id_productos", pDetalle.id_productos);
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
@@ -32,7 +32,7 @@ namespace DAL
 
         public static void UpdateTransaction(SqlConnection pConnection, SqlTransaction pTrasaction, DetallesFacturaEntity pDetalle)
         {
-            using (SqlCommand lCommand = new SqlCommand("UPDATE tb_detalles_factura SET cantidad_productos=@cantidad_productos, total=@total,id_factura=@id_factura,id_producto=@id_producto WHERE id=@id", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("UPDATE tb_detalles_factura SET cantidad_productos=@cantidad_productos, total=@total,id_factura=@id_factura,id_productos=@id_productos WHERE id=@id", pConnection))
             {
                 lCommand.Transaction = pTrasaction;
                 lCommand.CommandType = CommandType.Text;
@@ -40,7 +40,7 @@ namespace DAL
                 lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
                 lCommand.Parameters.AddWithValue("@total", pDetalle.total);
                 lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
-                lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
+                lCommand.Parameters.AddWithValue("@id_productos", pDetalle.id_productos);
                 lCommand.ExecuteNonQuery();
             }
         }
@@ -49,13 +49,13 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_detalles_factura (cantiad_productos,total,id_factura,id_producto) VALUES (@cantiad_productos,@total,@id_factura,@id_producto)", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_detalles_factura (cantiad_productos,total,id_factura,id_productos) VALUES (@cantiad_productos,@total,@id_factura,@id_productos)", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
                     lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
                     lCommand.Parameters.AddWithValue("@total", pDetalle.total);
                     lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
-                    lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
+                    lCommand.Parameters.AddWithValue("@id_productos", pDetalle.id_productos);
                     lConnection.Open();
                     lCommand.ExecuteNonQuery();
                     lConnection.Close();
@@ -65,14 +65,14 @@ namespace DAL
 
         public static void AddTransaction(SqlConnection pConnection, SqlTransaction pTransaction, DetallesFacturaEntity pDetalle)
         {
-            using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_detalles_factura (cantiad_productos,total,id_factura,id_producto) VALUES (@cantiad_productos,@total,@id_factura,@id_producto)", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_detalles_factura (cantidad_productos,total,id_factura,id_productos) VALUES (@cantidad_productos,@total,@id_factura,@id_productos)", pConnection))
             {
                 lCommand.Transaction = pTransaction;
                 lCommand.CommandType = CommandType.Text;
                 lCommand.Parameters.AddWithValue("@cantidad_productos", pDetalle.cantidad_productos);
                 lCommand.Parameters.AddWithValue("@total", pDetalle.total);
                 lCommand.Parameters.AddWithValue("@id_factura", pDetalle.id_factura);
-                lCommand.Parameters.AddWithValue("@id_producto", pDetalle.id_productos);
+                lCommand.Parameters.AddWithValue("@id_productos", pDetalle.id_productos);
                 lCommand.ExecuteNonQuery();
             }
         }
@@ -81,7 +81,7 @@ namespace DAL
         {
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_detalles_factura WHERE id=@id", lConnection))
+                using (SqlCommand lCommand = new SqlCommand("DELETE FROM tb_detalles_factura WHERE id=@id", lConnection))
                 {
                     lCommand.CommandType = CommandType.Text;
                     lCommand.Parameters.AddWithValue("@id", pDetalles.id);
@@ -94,7 +94,7 @@ namespace DAL
 
         public static void DeleteTransaction(SqlConnection pConnection, SqlTransaction pTransaction, DetallesFacturaEntity pDetalles)
         {
-            using (SqlCommand lCommand = new SqlCommand("DELETE FFROM tb_detalles_factura WHERE id=@id", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("DELETE FROM tb_detalles_factura WHERE id=@id", pConnection))
             {
                 lCommand.Transaction = pTransaction;
                 lCommand.CommandType = CommandType.Text;
@@ -144,7 +144,7 @@ namespace DAL
                             lDetalles.id = Convert.ToInt32(lRow["id"]);
                             lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                             lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                            lDetalles.id_factura = Convert.ToInt32(lRow["id_factura"]);
+                            lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
                             lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                             lReturnList.Add(lDetalles);
                         }
@@ -172,7 +172,7 @@ namespace DAL
                             lDetalles.id = Convert.ToInt32(lRow["id"]);
                             lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                             lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                            lDetalles.id_factura = Convert.ToInt32(lRow["id_factura"]);
+                            lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
                             lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                             lReturnList.Add(lDetalles);
                         }
@@ -202,7 +202,7 @@ namespace DAL
                             lDetalles.id = Convert.ToInt32(lRow["id"]);
                             lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                             lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                            lDetalles.id_factura = Convert.ToInt32(lRow["id_factura"]);
+                            lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
                             lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                             lReturnList.Add(lDetalles);
                         }
@@ -230,7 +230,7 @@ namespace DAL
                         lDetalles.id = Convert.ToInt32(lRow["id"]);
                         lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                         lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                        lDetalles.id_factura = Convert.ToInt32(lRow["id_factura"]);
+                        lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
                         lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                         return lDetalles;
                     }

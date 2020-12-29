@@ -15,7 +15,7 @@ namespace BO
         public int id { get; set; }
         public int cantidad_productos { get; set; }
         public decimal total { get; set; }
-        public int id_factura { get; set; }
+        public string id_factura { get; set; }
         public int id_productos { get; set; }
         public bool IsNew { get; set; }
         #endregion
@@ -180,7 +180,7 @@ namespace BO
             id = 0;
             cantidad_productos = 0;
             total = 0;
-            id_factura = 0;
+            id_factura = null;
             id_productos = 0;
             IsNew = true;
         }

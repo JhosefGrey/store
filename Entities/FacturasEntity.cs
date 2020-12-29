@@ -8,7 +8,7 @@ namespace Entities
 {
     public class FacturasEntity
     {
-        public int id { get; set; }
+        public string id { get; set; } = Guid.NewGuid().ToString();
         public int num { get; set; }
         public string serie { get; set; }
         public DateTime fecha { get; set; }

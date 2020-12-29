@@ -67,10 +67,11 @@ namespace DAL
 
         public static void AddTransaction(SqlConnection pConnection, SqlTransaction pTransaction, FacturasEntity pFacturas)
         {
-            using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_facturas (num,serie,fecha,id_cliente) VALUES (@num,@serie,@fecha,@id_cliente)", pConnection))
+            using (SqlCommand lCommand = new SqlCommand("INSERT INTO tb_facturas (id,num,serie,fecha,id_cliente) VALUES (@id,@num,@serie,@fecha,@id_cliente)", pConnection))
             {
                 lCommand.Transaction = pTransaction;
                 lCommand.CommandType = CommandType.Text;
+                lCommand.Parameters.AddWithValue("@id", pFacturas.id);
                 lCommand.Parameters.AddWithValue("@num", pFacturas.num);
                 lCommand.Parameters.AddWithValue("@serie", pFacturas.serie);
                 lCommand.Parameters.AddWithValue("@fecha", pFacturas.fecha);
@@ -143,7 +144,7 @@ namespace DAL
                         foreach (DataRow lRow in lDataTable.Rows)
                         {
                             FacturasEntity lFacturas = new FacturasEntity();
-                            lFacturas.id = Convert.ToInt32(lRow["id"]);
+                            lFacturas.id = Convert.ToString(lRow["id"]);
                             lFacturas.num = Convert.ToInt32(lRow["num"]);
                             lFacturas.serie = Convert.ToString(lRow["serie"]);
                             lFacturas.fecha = Convert.ToDateTime(lRow["fecha"]);
@@ -171,7 +172,7 @@ namespace DAL
                         foreach (DataRow lRow in lDataTable.Rows)
                         {
                             FacturasEntity lFacturas = new FacturasEntity();
-                            lFacturas.id = Convert.ToInt32(lRow["id"]);
+                            lFacturas.id = Convert.ToString(lRow["id"]);
                             lFacturas.num = Convert.ToInt32(lRow["num"]);
                             lFacturas.serie = Convert.ToString(lRow["serie"]);
                             lFacturas.fecha = Convert.ToDateTime(lRow["fecha"]);
@@ -201,7 +202,7 @@ namespace DAL
                         foreach (DataRow lRow in lDataTable.Rows)
                         {
                             FacturasEntity lFacturas = new FacturasEntity();
-                            lFacturas.id = Convert.ToInt32(lRow["id"]);
+                            lFacturas.id = Convert.ToString(lRow["id"]);
                             lFacturas.num = Convert.ToInt32(lRow["num"]);
                             lFacturas.serie = Convert.ToString(lRow["serie"]);
                             lFacturas.fecha = Convert.ToDateTime(lRow["fecha"]);
@@ -229,7 +230,7 @@ namespace DAL
                     {
                         DataRow lRow = lDataTable.Rows[0];
                         FacturasEntity lFacturas = new FacturasEntity();
-                        lFacturas.id = Convert.ToInt32(lRow["id"]);
+                        lFacturas.id = Convert.ToString(lRow["id"]);
                         lFacturas.num = Convert.ToInt32(lRow["num"]);
                         lFacturas.serie = Convert.ToString(lRow["serie"]);
                         lFacturas.fecha = Convert.ToDateTime(lRow["fecha"]);
@@ -239,6 +240,27 @@ namespace DAL
                 }
             }
             return null;
+        }
+        public static int GetNum(string pConnection, string pSerie)
+        {
+            int max = 0;
+            using (SqlConnection lConnection = new SqlConnection(pConnection))
+            {
+                using (SqlCommand lCommand = new SqlCommand("SELECT MAX(num) FROM tb_facturas WHERE serie=@serie", lConnection))
+                {
+                    lCommand.CommandType = CommandType.Text;
+                    lCommand.Parameters.AddWithValue("@serie", pSerie);
+                    lConnection.Open();
+                    object lReturnValue = lCommand.ExecuteScalar();
+                    lConnection.Close();
+                    if (!object.ReferenceEquals(lReturnValue, DBNull.Value) && lReturnValue != null)
+                    {
+                        max = Convert.ToInt32(lReturnValue);
+                    }
+                }
+            }
+
+            return max;
         }
 
 
