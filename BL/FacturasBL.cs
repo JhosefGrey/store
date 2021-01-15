@@ -36,11 +36,10 @@ namespace BL
                     }
                     lProducto.cantidad = lProducto.cantidad - oDetalle.cantidad_productos;
                     productos.Add(lProducto);
-
+                    lDetalle.total = oDetalle.cantidad_productos * lProducto.precio;
                     lDetalle.cantidad_productos = oDetalle.cantidad_productos;
-                    lDetalle.total = oDetalle.total;
                     lDetalle.id_productos = oDetalle.id_productos;
-                    lDetalle.id_factura = lFacturas.id;
+                    lDetalle.id_factura = Guid.Parse((string)lFacturas.id);
                     detalles.Add(lDetalle);
                 
                 }

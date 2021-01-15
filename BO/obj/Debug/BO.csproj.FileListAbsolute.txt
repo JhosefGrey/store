@@ -9,3 +9,5 @@ D:\Programming\Store\Store\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
 D:\Programming\Store\Store\BO\obj\Debug\BO.csproj.CopyComplete
 D:\Programming\Store\Store\BO\obj\Debug\BO.dll
 D:\Programming\Store\Store\BO\obj\Debug\BO.pdb
+D:\Programming\Store\Store\BO\bin\Debug\Entidades.dll
+D:\Programming\Store\Store\BO\bin\Debug\Entidades.pdb

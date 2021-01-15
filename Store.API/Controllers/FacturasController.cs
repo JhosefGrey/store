@@ -18,36 +18,34 @@ namespace Store.API.Controllers
 
 
         [System.Web.Http.HttpGet]
-        public string GetAll()
+        [System.Web.Http.Route("api/facturas")]
+        public List<eFactura> GetAll()
         {
-            List<FacturasBO> lClientes = FacturasBO.GetAll(pConnection);
-            string json = JsonConvert.SerializeObject(lClientes);
-            return json;
+            List<eFactura> lClientes = FacturasBO.getClienteById(pConnection);
+            return lClientes;
         }
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/factura/GetById")]
-        public string GetById(string id)
+        public FacturasBO GetById(string id)
         {
             FacturasBO lFactura = new FacturasBO(pConnection ,id);
-            string json = JsonConvert.SerializeObject(lFactura);
-            return json;
+            return lFactura;
         }
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/factura/getNum")]
-        public string GetNum(string serie)
+        public FacturasBO GetNum(string serie)
         {
             FacturasBO lFactura = new FacturasBO(pConnection, serie);
-            string json = JsonConvert.SerializeObject(lFactura);
-            return json;
+            return lFactura;
         }
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/factura/addFactura")]
-        public string PostFactura(eFactura pFactura) {
+        public IHttpActionResult PostFactura(eFactura pFactura) {
             FacturasBL.GuardarFactura(pConnection, pFactura);
-            return null;
+            return Ok();
         }
 
         [System.Web.Http.HttpDelete]

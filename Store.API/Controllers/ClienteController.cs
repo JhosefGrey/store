@@ -12,41 +12,61 @@ using Entidades;
 
 namespace Store.API.Controllers
 {
-    public class ClienteController: ApiController
+    public class ClienteController : ApiController
     {
-    
+
         public string pConnection { get; set; } = ConfigurationManager.ConnectionStrings["ConnectionDatabase"].ConnectionString;
 
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/Cliente/GetAll")]
-        public string GetAll()
+        public List<ClientesBO> GetAll()
         {
             List<ClientesBO> lClientes = ClientesBO.GetAll(pConnection);
-            string json = JsonConvert.SerializeObject(lClientes);
-            return json;
+            return lClientes;
         }
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/Cliente/GetById")]
-        public String GetById(int id)
+        public ClientesBO GetById(int id)
         {
-            try
-            {
-                ClientesBO lCliente = new ClientesBO(pConnection, id);
-                string json = JsonConvert.SerializeObject(lCliente);
-                return json;
-            }
-            catch (Exception e) { 
-                return InternalServerError(e).ToString();
-            }
-         
-
+            ClientesBO lCliente = new ClientesBO(pConnection, id);
+            return lCliente;
         }
 
         [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("api/Cliente/GetByFilter")]
+        public List<ClientesBO> GetAllFiltro([FromBody] eCliente pCliente)
+        {
+            try
+            {
+                if (pCliente.nombre == null && pCliente.nit != "")
+                {
+                    var filtro = " WHERE nit LIKE " + "'" + "%" + pCliente.nit + "%" + "'";
+                    List<ClientesBO> lCliente = ClientesBO.GetAllFiltro(pConnection, filtro);
+                    return lCliente;
+                }
+                if (pCliente.nit == null && pCliente.nombre != "")
+                {
+                    var filtro = " WHERE nombre LIKE " + "'" + "%" + pCliente.nombre + "%" + "'";
+                    List<ClientesBO> lCliente = ClientesBO.GetAllFiltro(pConnection, filtro);
+                    return lCliente;
+                }else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
+
+        [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/Cliente/AddCliente")]
-        public IHttpActionResult AddCliente([FromBody]eCliente pCliente)
+        public IHttpActionResult AddCliente([FromBody] eCliente pCliente)
         {
             try
             {
@@ -56,8 +76,9 @@ namespace Store.API.Controllers
                 lClientes.nit = pCliente.nit;
                 lClientes.Save(pConnection);
                 return Ok();
-            }catch(Exception e)
-            { 
+            }
+            catch (Exception e)
+            {
                 return InternalServerError(e);
             }
         }
@@ -97,12 +118,12 @@ namespace Store.API.Controllers
             {
                 return InternalServerError(e);
             }
-            
+
 
         }
 
 
     }
 
-   
+
 }

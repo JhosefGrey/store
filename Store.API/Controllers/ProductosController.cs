@@ -19,27 +19,18 @@ namespace Store.API.Controllers
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/Producto/GetAll")]
-        public string GetAll()
+        public List<ProductosBO> GetAll()
         {
             List<ProductosBO> lProductos = ProductosBO.GetAll(pConnection);
-            string json = JsonConvert.SerializeObject(lProductos);
-            return json;
+            return lProductos;
         }
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/Producto/GetById")]
-        public string GetById(int id)
+        public ProductosBO GetById(int id)
         {
-            try
-            {
                 ProductosBO lProdcuto = new ProductosBO(pConnection, id);
-                string json = JsonConvert.SerializeObject(lProdcuto);
-                return json;
-            }
-            catch (Exception e)
-            {
-                return InternalServerError(e).ToString();
-            }
+                return lProdcuto;       
         }
 
         [System.Web.Http.HttpPost]
@@ -64,6 +55,40 @@ namespace Store.API.Controllers
                 return InternalServerError(e);
             }
         }
+
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("api/Producto/GetByFilter")]
+        public List<ProductosBO> GetAllFiltro([FromBody] eProducto pProducto)
+        {
+            try
+            {
+                if (pProducto.nombre == null && pProducto.code != "")
+                {
+                    var filtro = "WHERE code LIKE " + "'" + "%" + pProducto.code + "%" + "'";
+                    List<ProductosBO> lProductos = ProductosBO.GetAllFiltro(pConnection, filtro);
+                    return lProductos;
+                }
+                if (pProducto.code == null && pProducto.nombre != "")
+                {
+                    var filtro = "WHERE nombre LIKE " + "'" + "%" + pProducto.nombre + "%" + "'";
+                    List<ProductosBO> lProductos = ProductosBO.GetAllFiltro(pConnection, filtro);
+                    return lProductos;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+
+
 
         [System.Web.Http.HttpPut]
         [System.Web.Http.Route("api/Producto/updateProducto")]

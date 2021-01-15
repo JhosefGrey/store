@@ -9,13 +9,13 @@ using System.Data.SqlClient;
 
 namespace BO
 {
-    public class DetallesFacturaBO
+     public partial class DetallesFacturaBO 
     {
     #region properties
         public int id { get; set; }
         public int cantidad_productos { get; set; }
         public decimal total { get; set; }
-        public string id_factura { get; set; }
+        public Guid id_factura { get; set; }
         public int id_productos { get; set; }
         public bool IsNew { get; set; }
         #endregion
@@ -180,7 +180,7 @@ namespace BO
             id = 0;
             cantidad_productos = 0;
             total = 0;
-            id_factura = null;
+            id_factura = default;
             id_productos = 0;
             IsNew = true;
         }

@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="ClientesBO.cs" />
     <Compile Include="DetallesFacturaBO.cs" />
+    <Compile Include="DetallesFacturaBO_Partial.cs" />
+    <Compile Include="FacturasBO_Partial.cs" />
     <Compile Include="FacturasBO.cs" />
     <Compile Include="ProductosBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,6 +53,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{291b9538-4a67-4856-8bf9-977bd0831620}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{ec841904-4168-456e-a9cd-b004b99ba719}</Project>
+      <Name>Entidades</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{23515562-c5ae-487a-aa03-074372bf73ef}</Project>

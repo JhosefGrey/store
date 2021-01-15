@@ -10,8 +10,10 @@ namespace Entidades
     {
         public string id { get; set; } 
         public string serie { get; set; }
-        public string fecha { get; set; }
+        public DateTime fecha { get; set; }
         public int id_cliente { get; set; }
+        public string nombre_cliente { get; set; }
+        public string apellido_cliente { get; set; }
         public int num { get; set; }
         public List<eDetalleFactura> Detalles { get; set; }
      

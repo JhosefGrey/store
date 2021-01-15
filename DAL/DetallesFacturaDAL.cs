@@ -144,7 +144,7 @@ namespace DAL
                             lDetalles.id = Convert.ToInt32(lRow["id"]);
                             lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                             lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                            lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
+                            lDetalles.id_factura = Guid.Parse((string)lRow["id_factura"]);
                             lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                             lReturnList.Add(lDetalles);
                         }
@@ -159,7 +159,7 @@ namespace DAL
             List<DetallesFacturaEntity> lReturnList = new List<DetallesFacturaEntity>();
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlDataAdapter lDataAdapter = new SqlDataAdapter(string.Concat("SELECT * FROM tb_detalles_productos", pFilter), lConnection))
+                using (SqlDataAdapter lDataAdapter = new SqlDataAdapter(string.Concat("SELECT * FROM tb_detalles_factura ", pFilter), lConnection))
                 {
                     lDataAdapter.SelectCommand.CommandType = CommandType.Text;
                     DataTable lDataTable = new DataTable();
@@ -172,7 +172,7 @@ namespace DAL
                             lDetalles.id = Convert.ToInt32(lRow["id"]);
                             lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                             lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                            lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
+                            lDetalles.id_factura = Guid.Parse((string)lRow["id_factura"]);
                             lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                             lReturnList.Add(lDetalles);
                         }
@@ -202,7 +202,7 @@ namespace DAL
                             lDetalles.id = Convert.ToInt32(lRow["id"]);
                             lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                             lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                            lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
+                            lDetalles.id_factura = Guid.Parse((string)lRow["id_factura"]);
                             lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                             lReturnList.Add(lDetalles);
                         }
@@ -230,7 +230,7 @@ namespace DAL
                         lDetalles.id = Convert.ToInt32(lRow["id"]);
                         lDetalles.cantidad_productos = Convert.ToInt32(lRow["cantidad_productos"]);
                         lDetalles.total = Convert.ToDecimal(lRow["total"]);
-                        lDetalles.id_factura = Convert.ToString(lRow["id_factura"]);
+                        lDetalles.id_factura = Guid.Parse((string)lRow["id_factura"]);
                         lDetalles.id_productos = Convert.ToInt32(lRow["id_productos"]);
                         return lDetalles;
                     }

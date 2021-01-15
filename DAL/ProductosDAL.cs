@@ -166,7 +166,7 @@ namespace DAL
             List<ProductosEntity> lReturnList = new List<ProductosEntity>();
             using (SqlConnection lConnection = new SqlConnection(pConnection))
             {
-                using (SqlDataAdapter lDataAdapter = new SqlDataAdapter(string.Concat("SELECT * FROM tb_productos", pFilter), lConnection))
+                using (SqlDataAdapter lDataAdapter = new SqlDataAdapter(string.Concat("SELECT * FROM tb_productos ", pFilter), lConnection))
                 {
                     lDataAdapter.SelectCommand.CommandType = CommandType.Text;
                     DataTable lDataTable = new DataTable();
